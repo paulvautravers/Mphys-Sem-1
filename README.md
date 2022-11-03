@@ -6,9 +6,9 @@ Contents:
 
 Folders:
 
--archive: Folder with all old code, some may still be of use, but mostly code that has been replaced or no longer of interest
--h_dict_data: Dictionaries containing Hurst exponent series for different downsampling rates
--haemocyte_tracking_data: Input data to retrieve H values, from tom Millard
+- archive: Folder with all old code, some may still be of use, but mostly code that has been replaced or no longer of interest
+- h_dict_data: Dictionaries containing Hurst exponent series for different downsampling rates
+- haemocyte_tracking_data: Input data to retrieve H values, from tom Millard
 
 Code:
 
