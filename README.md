@@ -5,11 +5,13 @@ Repository for Mphys project investigation into anomalous transport of haemocyte
 Contents:
 
 Folders:
+
 -archive: Folder with all old code, some may still be of use, but mostly code that has been replaced or no longer of interest
 -h_dict_data: Dictionaries containing Hurst exponent series for different downsampling rates
 -haemocyte_tracking_data: Input data to retrieve H values, from tom Millard
 
 Code:
+
 - Random Walk.ipynb: Initial code simulating random walks, should be moved to archive 
 - fbm_random_walk.ipynb: Random walk simulations using fractional brownian motion and multifractional brownian motion. 
 - gen_fbm_nn_model.py: Python script to generate trained neural network off of simulated fractional brownian motion
