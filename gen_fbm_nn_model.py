@@ -38,13 +38,13 @@ def gen_nn_model(ntimes,activation_func='relu',optimizer='adam',
     # optimizer = tf.keras.optimizers.RMSprop(0.001)
     nn_model.compile(optimizer=optimizer,
                   loss=loss_func,
-                  metrics=[loss_func,'mean_squared_error'])
+                  metrics=['mean_absolute_error','mean_squared_error'])
     if summary==1:
         nn_model.summary()
     return nn_model
 
 def train_nn_model(nn_model,training_data,training_labels,ntimes,
-                   n_epochs,validation_split=0.8,verbose=1):
+                   n_epochs,validation_split=0.6,verbose=1):
     
     history = nn_model.fit(training_data,training_labels,epochs=n_epochs,
                         validation_split=validation_split,verbose=verbose)
@@ -53,8 +53,19 @@ def train_nn_model(nn_model,training_data,training_labels,ntimes,
     nn_model.save("./model3dense_n"+str(ntimes)+".h5")
     del nn_model
 
+def evaluate_model(nsamples,ntimes,verbose=1):
+
+    #evaluate the model generalizes by using the test data set
+    testdata, testlabels = gen_fbm_data(nsamples, ntimes)
+    model = tf.keras.models.load_model("./model3dense_n"+str(ntimes)+".h5")
+    loss, mean_abs_error, mean_squared_error = model.evaluate(testdata, testlabels, verbose=verbose)
+    with open('metrics_'+"model3dense_n"+str(ntimes), 'w') as f:
+        print("Testing set Mean Abs Error: {}".format(mean_abs_error), file=f)
+        print("Testing set Mean Squared Error: {}".format(mean_squared_error), file=f)
+
 def __main__(nsamples,ntimes,epochs):
 
     training_data,training_labels = gen_fbm_data(nsamples,ntimes)
     model = gen_nn_model(ntimes)
     train_nn_model(model,training_data,training_labels,ntimes,epochs)
+    evaluate_model(nsamples,ntimes)
