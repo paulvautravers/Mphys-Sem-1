@@ -20,3 +20,4 @@ Code:
 - haemocyte_plot.ipynb: Contains code to plot 2d and 3d histograms of the hurst exponent
 - mixture_modelling.ipynb: Code to perform gaussian/skew mixture modelling of hurst histograms, should focus on bounded distributions
 
+03/11/2022
