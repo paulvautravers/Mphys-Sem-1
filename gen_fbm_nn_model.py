@@ -60,8 +60,8 @@ def evaluate_model(nsamples,ntimes,verbose=1):
     model = tf.keras.models.load_model("./model3dense_n"+str(ntimes)+".h5")
     loss, mean_abs_error, mean_squared_error = model.evaluate(testdata, testlabels, verbose=verbose)
     with open('metrics_'+"model3dense_n"+str(ntimes), 'w') as f:
-        print("Testing set Mean Abs Error: {}".format(mean_abs_error), file=f)
-        print("Testing set Mean Squared Error: {}".format(mean_squared_error), file=f)
+        print("{}   #Testing set Mean Abs Error".format(mean_abs_error), file=f)
+        print("{}   #Testing set Mean Squared Error".format(mean_squared_error), file=f)
 
 def __main__(nsamples,ntimes,epochs):
 
